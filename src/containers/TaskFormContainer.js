@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import TaskForm from './components/TaskForm';
 import TableResult from './components/TableResult';
 import AddButton from './components/AddButton';
-import Message from './components/Message'
+import Message from './components/Message';
 
-class App extends Component {
+import * as actions from './../actions/index';
+
+import {connect} from 'react-redux';
+
+import
+
+class TaskFormContainer extends Component {
   render() {
     return (
       <div>
@@ -28,4 +32,18 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps=(state)=>{
+    return {
+        taskForm:state.TaskForm
+    }
+}
+
+const mapDispatchToProps=(dispatch, props)=>{
+    return {
+        onAction:(data)=>{
+            dispatch(actions.ADD_TASK);
+        }
+    }
+}
+
+export default TaskFormContainer;
