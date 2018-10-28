@@ -1,33 +1,20 @@
 import React, { Component } from 'react';
-import TaskForm from './components/TaskForm';
-import TableResult from './components/TableResult';
-import AddButton from './components/AddButton';
-import Message from './components/Message';
-
+import TaskForm from './../components/TaskForm';
 import * as actions from './../actions/index';
-
 import {connect} from 'react-redux';
-
-import
 
 class TaskFormContainer extends Component {
   render() {
+      var {taskForm, onAddTask, onCloseForm, onChangeMessage, onChangeInput}=this.props;
     return (
-      <div>
-        <h3 class="center">Task List</h3>
-        <hr/>
-        <div class="container">
-            <div class="row">
-              <TaskForm/>
-              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <AddButton/>
-                <Message/>
-                <TableResult/>
-              </div>
-              
-            </div>
-        </div>
-      </div>
+      <TaskForm
+        taskForm={taskForm}
+        onAddTask={onAddTask}
+        onCloseForm={onCloseForm}
+        onChangeMessage={onChangeMessage}
+        onChangeInput={onChangeInput}
+      >
+      </TaskForm>
     );
   }
 }
@@ -40,10 +27,19 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch, props)=>{
     return {
-        onAction:(data)=>{
-            dispatch(actions.ADD_TASK);
+        onAddTask:(task)=>{
+            dispatch(actions.ADD_TASK(task));
+        },
+        onCloseForm:()=>{
+            dispatch(actions.CLOSE_FORM());
+        },
+        onChangeMessage:(message)=>{
+            dispatch(actions.CHANGE_MESSAGE(message))
+        },
+        onChangeInput:(dataForm)=>{
+            dispatch(actions.CHANGE_INPUT(dataForm))
         }
     }
 }
 
-export default TaskFormContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(TaskFormContainer);

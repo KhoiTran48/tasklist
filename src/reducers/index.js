@@ -3,8 +3,9 @@ import TaskForm from './TaskForm';
 import TableResult from './TableResult';
 import Message from './Message';
 
-export const myReducers=combineReducers({
+const myReducers=combineReducers({
     TaskForm,
     TableResult,
     Message
 })
+export default myReducers;

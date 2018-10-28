@@ -1,32 +1,36 @@
 import * as Types from './../constants/ActionTypes';
 
 var initialState={
-    name:'',
-    status:'active',
-    isDisplay:true
-}
-
+        id:0,
+        name:'',
+        status:'active',
+        isDisplay:true
+    };
 const taskForm = (state=initialState, action)=>{
-    var {name, status}=action.task;
     switch(action.type){
-        case Types.OPEN_FORM:
-            state={
+        case Types.OPEN_FORM, Types.CHANGE_INPUT:
+        var {id, name, status}=action.dataForm;
+        state={
+                id:id,
                 name:name,
                 status:status,
                 isDisplay: true
             }
-            return [...state];
+            return {...state};
         case Types.CLOSE_FORM:
             state={
+                id:'',
                 name:'',
                 status:'active',
                 isDisplay:false
             }
-            return [...state];
+            return {...state};
         case Types.TOGGLE_FORM:
             state.isDisplay=!state.isDisplay;
-            return [...state];
+            return {...state};
         default:
-            return [...state];
+            return {...state};
     }
 }
+
+export default taskForm;

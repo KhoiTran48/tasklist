@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 class Message extends Component {
   render() {
     return (
-      <div class="alert alert-success">
-        <strong>Success!</strong> Indicates a successful or positive action.
+      <div className="alert alert-success">
+        <strong>Success!</strong> {this.props.message}
       </div>
     );
   }
 }
 
-export default Message;
+const mapStateToProps=(state)=>{
+  return {
+      message:state.Message
+  }
+}
+
+export default connect(mapStateToProps, null)(Message);

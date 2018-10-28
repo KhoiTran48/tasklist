@@ -52,6 +52,21 @@ export const TOGGLE_FORM=()=>{
     }
 }
 
+export const CHANGE_MESSAGE=(message)=>{
+    return {
+        type:Types.CHANGE_MESSAGE,
+        message
+
+    }
+}
+
+export const CHANGE_INPUT=(dataForm)=>{
+    return {
+        type:Types.CHANGE_INPUT,
+        dataForm
+    }
+}
+
 export const FILTER_TABLE=(searchBy, searchValue)=>{
     return {
         type:Types.FILTER_TABLE,

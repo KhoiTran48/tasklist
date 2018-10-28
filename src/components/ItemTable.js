@@ -6,12 +6,12 @@ class ItemTable extends Component {
       <tr>
           <td>1</td>
           <td>Test</td>
-          <td class="center">
-              <button type="button" class="btn btn-success center">Kích Hoạt</button>
+          <td className="center">
+              <button type="button" className="btn btn-success center">Kích Hoạt</button>
           </td>
-          <td class="center">
-              <button type="button" class="btn btn-success center">Edit</button>
-              <button type="button" class="btn btn-success center">Delete</button>
+          <td className="center">
+              <button type="button" className="btn btn-success center">Edit</button>
+              <button type="button" className="btn btn-success center">Delete</button>
           </td>
       </tr>
     );

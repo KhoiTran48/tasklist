@@ -5,10 +5,12 @@ var initialState=Message.WELCOME ? Message.WELCOME : 'Welcome';
 
 var message = (state=initialState, action)=>{
     switch(action.type){
-        case Types.ADD_TASK, Types.UPDATE_STATUS, Types.UPDATE_TASK, Types.DELETE_TASK:
+        case Types.CHANGE_MESSAGE:
             state=action.message;
-            return [...state];
+            return state;
         default:
-            return [...state];
+            return state;
     }
 }
+
+export default message;

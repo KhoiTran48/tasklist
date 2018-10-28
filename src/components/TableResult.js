@@ -4,8 +4,8 @@ import ItemTable from './ItemTable';
 class TableResult extends Component {
   render() {
     return (
-          <div class="row mt">
-              <table class="table table-hover">
+          <div className="row mt">
+              <table className="table table-hover">
                   <thead>
                       <tr>
                           <th>STT</th>
@@ -18,10 +18,10 @@ class TableResult extends Component {
                       <tr>
                           <td></td>
                           <td>
-                              <input type="text" name="" id="" class="form-control" value="" required="required" pattern="" title=""/>
+                              <input type="text" name="" id="" className="form-control" value="" required="required" pattern="" title=""/>
                           </td>
                           <td>
-                              <select name="" id="" class="form-control" required="required">
+                              <select name="" id="" className="form-control" required="required">
                                   <option value="active">Kích Hoạt</option>
                                   <option value="inActive">Ẩn</option>
                               </select>
