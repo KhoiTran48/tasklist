@@ -9,7 +9,18 @@ import Message from './../components/Message';
 
 class TableResultContainer extends Component {
   render() {
-      var {taskForm, tableResult, onToggleForm, onChangeInput, onUpdateStatus, onDeleteTask, onChangeMessage}=this.props;
+      var {filterTable, taskForm, tableResult, onToggleForm, onChangeInput, onUpdateStatus, onDeleteTask, onChangeMessage, onFilterTable}=this.props;
+        if(filterTable.name){
+            tableResult=tableResult.filter((item)=>{
+                return item.name.toLowerCase().indexOf(filterTable.name.toLowerCase()) !==-1
+            })
+        }
+        if(filterTable.status !== 'all'){
+            tableResult=tableResult.filter((item)=>{
+                return item.status.toLowerCase() === filterTable.status.toLowerCase()
+            })
+        }
+      
     return (
         <div className={taskForm.isDisplay ? "col-xs-8 col-sm-8 col-md-8 col-lg-8": "col-xs-12 col-sm-12 col-md-12 col-lg-12"}>
         <AddButton
@@ -23,6 +34,7 @@ class TableResultContainer extends Component {
             onUpdateStatus={onUpdateStatus}
             onDeleteTask={onDeleteTask}
             onChangeMessage={onChangeMessage}
+            onFilterTable={onFilterTable}
         />
       </div>
     );
@@ -32,7 +44,8 @@ class TableResultContainer extends Component {
 const mapStateToProps=(state)=>{
     return {
         tableResult:state.TableResult,
-        taskForm:state.TaskForm
+        taskForm:state.TaskForm,
+        filterTable:state.FilterTable
     }
 }
 
@@ -53,6 +66,9 @@ const mapDispatchToProps=(dispatch, props)=>{
         },
         onDeleteTask:(task)=>{
             dispatch(actions.DELTE_TASK(task))
+        },
+        onFilterTable:(searchBy, searchValue)=>{
+            dispatch(actions.FILTER_TABLE(searchBy, searchValue))
         }
     }
 }

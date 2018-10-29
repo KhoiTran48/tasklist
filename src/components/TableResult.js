@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import ItemTable from './ItemTable';
 
 class TableResult extends Component {
+
+    onFilterTable=(event)=>{
+        var target=event.target;
+        this.props.onFilterTable(target.name, target.value)
+    }
     showItemTask=()=>{
         var {tableResult, onChangeInput, onUpdateStatus, onDeleteTask, onChangeMessage}=this.props;
         var result=[];
@@ -34,10 +39,11 @@ class TableResult extends Component {
                       <tr>
                           <td></td>
                           <td>
-                              <input type="text" name="" id="" className="form-control" required="required" pattern="" title="" onChange={()=>{}   }/>
+                              <input type="text" name="name" id="" className="form-control" required="required" pattern="" title="" onChange={this.onFilterTable}/>
                           </td>
                           <td>
-                              <select name="" id="" className="form-control" required="required">
+                              <select name="status" id="" className="form-control" required="required" onChange={this.onFilterTable}>
+                                  <option value="all">All</option>
                                   <option value="active">Kích Hoạt</option>
                                   <option value="inActive">Ẩn</option>
                               </select>
