@@ -2,6 +2,22 @@ import React, { Component } from 'react';
 import ItemTable from './ItemTable';
 
 class TableResult extends Component {
+    showItemTask=()=>{
+        var {tableResult, onChangeInput, onUpdateStatus, onDeleteTask, onChangeMessage}=this.props;
+        var result=[];
+        result=tableResult.map((item, index)=>{
+            return <ItemTable 
+                    index={index+1}
+                    key={index} 
+                    task={item} 
+                    onChangeInput={onChangeInput}
+                    onUpdateStatus={onUpdateStatus}
+                    onDeleteTask={onDeleteTask}
+                    onChangeMessage={onChangeMessage}
+                    />
+        })
+        return result;
+    }
   render() {
     return (
           <div className="row mt">
@@ -18,7 +34,7 @@ class TableResult extends Component {
                       <tr>
                           <td></td>
                           <td>
-                              <input type="text" name="" id="" className="form-control" value="" required="required" pattern="" title=""/>
+                              <input type="text" name="" id="" className="form-control" required="required" pattern="" title="" onChange={()=>{}   }/>
                           </td>
                           <td>
                               <select name="" id="" className="form-control" required="required">
@@ -28,9 +44,7 @@ class TableResult extends Component {
                           </td>
                       </tr>
                       {/* item table */}
-                      <ItemTable/>
-                      <ItemTable/>
-                      <ItemTable/>
+                      {this.showItemTask()}
                   </tbody>
               </table>
           </div>

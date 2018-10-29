@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import TaskForm from './components/TaskForm';
-import TableResult from './components/TableResult';
-import AddButton from './components/AddButton';
-import Message from './components/Message';
 
 import TaskFormContainer from './containers/TaskFormContainer';
+import TableResultContainer from './containers/TableResultContainer';
 
 class App extends Component {
   render() {
@@ -17,12 +14,7 @@ class App extends Component {
         <div className="container">
             <div className="row">
               <TaskFormContainer/>
-              <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <AddButton/>
-                <Message/>
-                <TableResult/>
-              </div>
-              
+              <TableResultContainer/>
             </div>
         </div>
       </div>

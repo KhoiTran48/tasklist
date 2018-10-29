@@ -27,7 +27,7 @@ var tableResult= (state=initialState, action)=>{
             return [...state];
         case Types.DELETE_TASK:
             var index=state.findIndex((item)=>{
-                return item.id=task.id
+                return item.id==task.id
             })
             if(index!=-1){
                 state.splice(index,1);
@@ -36,15 +36,15 @@ var tableResult= (state=initialState, action)=>{
             return [...state];
         case Types.UPDATE_STATUS:
             var index=state.findIndex((item)=>{
-                return item.id=task.id
+                return item.id==task.id
             })
-            if(index != -1){
+            if(index !== -1){
                 var status="active";
                 if(state[index].status === "active"){
                     status="inActive";
                 }
                 state[index]={
-                    name:task.name,
+                    ...state[index],
                     status:status
                 }
             }

@@ -5,7 +5,7 @@ class Message extends Component {
   render() {
     return (
       <div className="alert alert-success">
-        <strong>Success!</strong> {this.props.message}
+        {this.props.message}
       </div>
     );
   }

@@ -19,14 +19,20 @@ const taskForm = (state=initialState, action)=>{
             return {...state};
         case Types.CLOSE_FORM:
             state={
-                id:'',
+                id:0,
                 name:'',
                 status:'active',
                 isDisplay:false
             }
             return {...state};
         case Types.TOGGLE_FORM:
-            state.isDisplay=!state.isDisplay;
+            var isDisplay=!state.isDisplay;
+            state={
+                id:0,
+                name:'',
+                status:'active',
+                isDisplay:isDisplay
+            }
             return {...state};
         default:
             return {...state};
